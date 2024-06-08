@@ -1,0 +1,15 @@
+{% extends 'jobs/_base.html' %}
+
+{% block content %}
+    <h1 class="text-3xl font-semibold">{{ object.name }}</h1>
+    <p class="text-lg text-gray-800 my-2">{{ object.tagline }}</p>
+    {% if object.website %}
+        <p>
+            <a class="text-blue-600 underline" target="_blank" href="{{ object.website }}" alt="dev website">Visit Website</a>
+        </p>
+    {% else %}
+        <p class="text-gray-600">No website</p>
+    {% endif %}
+    <hr class="my-4">
+    <p>{{ object.bio }}</p>
+{% endblock content %}
