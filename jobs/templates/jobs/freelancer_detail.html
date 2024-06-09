@@ -1,15 +1,22 @@
 {% extends 'jobs/_base.html' %}
 
 {% block content %}
-    <h1 class="text-3xl font-semibold">{{ object.name }}</h1>
-    <p class="text-lg text-gray-800 my-2">{{ object.tagline }}</p>
-    {% if object.website %}
-        <p>
-            <a class="text-blue-600 underline" target="_blank" href="{{ object.website }}" alt="dev website">Visit Website</a>
-        </p>
-    {% else %}
-        <p class="text-gray-600">No website</p>
-    {% endif %}
-    <hr class="my-4">
-    <p>{{ object.bio }}</p>
+<div class="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg flex items-center">
+    <div class="mr-6">
+        {% if freelancer.profile_pic %}
+            <img class="w-32 h-32 border rounded-full" src="{{ freelancer.profile_pic.url }}" alt="Profile pic">
+        {% endif %}
+    </div>
+    <div>
+        <h1 class="text-3xl font-semibold text-gray-900">{{ object.name }}</h1>
+        <p class="text-lg text-gray-600 my-2">{{ object.tagline }}</p>
+        {% if object.website %}
+            <p><a class="text-blue-600 underline" target="_blank" href="{{ object.website }}" alt="dev website">Website</a></p>
+        {% else %}
+            <p class="text-gray-600">No website</p>
+        {% endif %}
+        <hr class="my-4 border-gray-300">
+        <p class="text-gray-700">{{ object.bio }}</p>
+    </div>
+</div>
 {% endblock content %}

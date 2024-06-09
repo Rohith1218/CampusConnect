@@ -1,15 +1,32 @@
 {% extends "jobs/_base.html" %}
 
 {% block content %}
-    <h1 class="text-4xl font-bold mb-8">All Freelance Developers</h1>
-    <div class="shadow">
+<div class="max-w-7xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+    <h1 class="text-4xl font-bold mb-8 text-gray-900">All Freelance Developers</h1>
+    <div class="divide-y divide-gray-200">
         {% for freelancer in object_list %}
-            <a href="{% url 'freelancer-detail' freelancer.pk %}">
-                <div class="p-6 border">
-                    <p class="text-lg font-semibold">{{ freelancer.name }}</p>
-                    <p class="text-gray-700 pt-4">{{ freelancer.tagline }}</p>
+            <a href="{% url 'freelancer-detail' freelancer.pk %}" class="block hover:bg-gray-100 transition duration-200">
+                <div class="p-6 flex items-center">
+                    <div class="flex-shrink-0">
+                        {% if freelancer.profile_pic %}
+                            <img class="w-20 h-20 border rounded-full mr-6" src="{{ freelancer.profile_pic.url }}" alt="Profile pic">
+                        {% else %}
+                            <div class="w-20 h-20 border rounded-full mr-6 bg-gray-200 flex items-center justify-center text-gray-500">
+                                <span class="text-xl">No Image</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <p class="text-lg font-semibold text-gray-900">
+                            {{ freelancer.name }}
+                        </p>
+                        <p class="text-gray-700 pt-1">
+                            {{ freelancer.tagline }}
+                        </p>
+                    </div>
                 </div>
             </a>
         {% endfor %}
     </div>
+</div>
 {% endblock content %}
