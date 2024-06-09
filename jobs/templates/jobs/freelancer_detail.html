@@ -1,14 +1,14 @@
 {% extends 'jobs/_base.html' %}
 
 {% block content %}
-<div class="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg flex items-center">
-    <div class="mr-6">
-        {% if freelancer.profile_pic %}
-            <img class="w-32 h-32 border rounded-full" src="{{ freelancer.profile_pic.url }}" alt="Profile pic">
+<div class="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg space-y-6">
+    <div class="flex-shrink-0">
+        {% if object.profile_pic %}
+            <img class="w-32 h-32 border-4 border-blue-500 rounded-full object-cover" src="{{ object.profile_pic.url }}" alt="Profile pic">
         {% endif %}
     </div>
-    <div>
-        <h1 class="text-3xl font-semibold text-gray-900">{{ object.name }}</h1>
+    <div class="flex-grow">
+        <h1 class="text-4xl font-semibold text-gray-900">{{ object.name }}</h1>
         <p class="text-lg text-gray-600 my-2">{{ object.tagline }}</p>
         {% if object.website %}
             <p><a class="text-blue-600 underline" target="_blank" href="{{ object.website }}" alt="dev website">Website</a></p>
@@ -16,7 +16,84 @@
             <p class="text-gray-600">No website</p>
         {% endif %}
         <hr class="my-4 border-gray-300">
-        <p class="text-gray-700">{{ object.bio }}</p>
+        
+        <!-- Bio section -->
+        <div class="collapsible border border-gray-300 rounded-lg">
+            <h2 class="text-2xl font-semibold text-gray-800 section-toggle cursor-pointer px-4 py-2 border-b border-gray-300">Bio</h2>
+            <div class="content hidden p-4">
+                <p class="text-lg text-gray-700 mt-2">{{ object.bio }}</p>
+            </div>
+        </div>
+        
+        <!-- Skills section -->
+        <div class="collapsible border border-gray-300 rounded-lg">
+            <h2 class="text-2xl font-semibold text-gray-800 section-toggle cursor-pointer px-4 py-2 border-b border-gray-300">Skills</h2>
+            <div class="content hidden p-4">
+                <ul class="list-disc list-inside text-lg text-gray-700 mt-2">
+                    {% for skill in skills_list %}
+                        <li>{{ skill }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Reviews and Comments section -->
+        <div class="collapsible border border-gray-300 rounded-lg">
+            <h2 class="text-2xl font-semibold text-gray-800 section-toggle cursor-pointer px-4 py-2 border-b border-gray-300">Reviews and Comments</h2>
+            <div class="content hidden p-4">
+                <div class="space-y-4 mt-2">
+                    {% for review in reviews_list %}
+                        <div class="bg-gray-100 p-3 rounded-lg shadow-sm">
+                            <p class="text-lg text-gray-700 italic">"{{ review.comment }}"</p>
+                            <p class="text-base text-gray-600">{{ review.reviewer }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact section -->
+        <div class="collapsible border border-gray-300 rounded-lg">
+            <h2 class="text-2xl font-semibold text-gray-800 section-toggle cursor-pointer px-4 py-2 border-b border-gray-300">Contact</h2>
+            <div class="content hidden p-4">
+                <p class="text-lg text-gray-700 mt-2">
+                    <span class="font-semibold">Email:</span> {{ object.Email }}
+                </p>
+                <p class="text-lg text-gray-700 mt-2">
+                    <span class="font-semibold">Phone:</span> {{ object.Phone_number }}
+                </p>
+            </div>
+        </div>
+        
     </div>
 </div>
+
+<script>
+    // Function to toggle collapsible sections
+    document.querySelectorAll('.section-toggle').forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+            content.classList.toggle('hidden');
+        });
+    });
+</script>
+
+<style>
+    .collapsible {
+        margin-bottom: 20px;
+    }
+
+    .cursor-pointer {
+        cursor: pointer;
+    }
+
+    .content {
+        padding: 0;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+
 {% endblock content %}

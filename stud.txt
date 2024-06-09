@@ -1,0 +1,61 @@
+students:
+- name: John Doe
+  rollno: HU21CSEN0100571
+  cgpa: 9.5
+  skills: [python, javascript, data structures]
+- name: Jane Smith
+  rollno: HU21CSEN0100572
+  cgpa: 8.9
+  skills: [python, machine learning, data analysis]
+- name: Alice Johnson
+  rollno: HU21CSEN0100573
+  cgpa: 9.2
+  skills: [python, web development, database management]
+- name: Bob Brown
+  rollno: HU21CSEN0100574
+  cgpa: 9.8
+  skills: [python, algorithms, software engineering]
+- name: Emily Wilson
+  rollno: HU21CSEN0100575
+  cgpa: 8.7
+  skills: [python, data visualization, statistics]
+- name: David Lee
+  rollno: HU21CSEN0100576
+  cgpa: 9.6
+  skills: [python, computer graphics, artificial intelligence]
+- name: Grace Martinez
+  rollno: HU21CSEN0100577
+  cgpa: 9.3
+  skills: [python, cybersecurity, networking]
+- name: Michael Garcia
+  rollno: HU21CSEN0100578
+  cgpa: 8.8
+  skills: [python, software development, cloud computing]
+- name: Sophia Hernandez
+  rollno: HU21CSEN0100579
+  cgpa: 9.1
+  skills: [python, natural language processing, big data]
+- name: Daniel Patel
+  rollno: HU21CSEN0100580
+  cgpa: 9.4
+  skills: [python, backend development, API design]
+- name: Olivia Lopez
+  rollno: HU21CSEN0100581
+  cgpa: 9.7
+  skills: [python, frontend development, UI/UX design]
+- name: Logan Gonzalez
+  rollno: HU21CSEN0100582
+  cgpa: 8.6
+  skills: [python, game development, virtual reality]
+- name: Mia Wilson
+  rollno: HU21CSEN0100583
+  cgpa: 9.0
+  skills: [python, web scraping, automation]
+- name: Ethan Anderson
+  rollno: HU21CSEN0100584
+  cgpa: 9.9
+  skills: [python, data mining, predictive modeling]
+- name: Ava Taylor
+  rollno: HU21CSEN0100585
+  cgpa: 8.5
+  skills: [python, embedded systems, IoT]

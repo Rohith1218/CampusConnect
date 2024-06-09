@@ -12,9 +12,13 @@ class freelancer(models.Model):
     bio = models.TextField(blank=True)
     website = models.URLField(blank=True)
     profile_pic = models.ImageField(upload_to='profiles/', blank=True)
+    Skills = models.CharField(max_length=255, blank=True)
+    Reviews = models.TextField(blank=True)
+    Phone_number = models.CharField(max_length=20, blank=True)
+    Email = models.EmailField(blank=True)
 
 
-    def __str__(self):
+    def _str_(self):
         return f"{self.id} | {self.name}"
     
 
@@ -23,9 +27,9 @@ class business(models.Model):
     name = models.CharField(max_length=50)
     bio = models.TextField(blank=True)
     profile_pic = models.ImageField(upload_to='profiles/', blank=True)
+    Reviews = models.TextField(blank=True)
+    Phone_number = models.CharField(max_length=20, blank=True)
+    Email = models.EmailField(blank=True)
 
-    def __str__(self):
+    def _str_(self):
         return f"{self.id} | {self.name}"
-
-
-

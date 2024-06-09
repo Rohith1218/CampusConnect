@@ -1,4 +1,3 @@
-
 from django.urls import path
 from .views import index, freelancerlistview, freelancerdetailview, freelancercreateview, businesscreateview, handle_login
 
@@ -10,3 +9,4 @@ urlpatterns = [
     path('business/create/',businesscreateview.as_view(), name='business-create'),
 
 ]
+

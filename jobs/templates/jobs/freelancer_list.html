@@ -1,17 +1,17 @@
 {% extends "jobs/_base.html" %}
 
 {% block content %}
-<div class="max-w-7xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
-    <h1 class="text-4xl font-bold mb-8 text-gray-900">All Freelance Developers</h1>
+<div class="max-w-7xl mx-auto mt-10 p-8 bg-white shadow-xl rounded-xl">
+    <h1 class="text-4xl font-bold mb-8 text-purple-700">All Freelance Developers</h1>
     <div class="divide-y divide-gray-200">
         {% for freelancer in object_list %}
             <a href="{% url 'freelancer-detail' freelancer.pk %}" class="block hover:bg-gray-100 transition duration-200">
                 <div class="p-6 flex items-center">
                     <div class="flex-shrink-0">
                         {% if freelancer.profile_pic %}
-                            <img class="w-20 h-20 border rounded-full mr-6" src="{{ freelancer.profile_pic.url }}" alt="Profile pic">
+                            <img class="w-20 h-20 border-4 border-purple-300 rounded-full mr-6 shadow-md" src="{{ freelancer.profile_pic.url }}" alt="Profile pic">
                         {% else %}
-                            <div class="w-20 h-20 border rounded-full mr-6 bg-gray-200 flex items-center justify-center text-gray-500">
+                            <div class="w-20 h-20 border-4 border-purple-300 rounded-full mr-6 bg-gray-200 flex items-center justify-center text-gray-500 shadow-md">
                                 <span class="text-xl">No Image</span>
                             </div>
                         {% endif %}
@@ -28,5 +28,21 @@
             </a>
         {% endfor %}
     </div>
+    <!-- Pagination -->
+    <div class="mt-8 flex justify-center">
+        <div class="inline-flex rounded-md shadow">
+            {% if object_list.has_previous %}
+                <a href="?page={{ object_list.previous_page_number }}" class="py-2 px-4 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                    Previous
+                </a>
+            {% endif %}
+            {% if object_list.has_next %}
+                <a href="?page={{ object_list.next_page_number }}" class="ml-3 py-2 px-4 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                    Next
+                </a>
+            {% endif %}
+        </div>
+    </div>
+    <!-- End of Pagination -->
 </div>
 {% endblock content %}

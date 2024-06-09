@@ -1,54 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
+</script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CampusConnect - Freelancer Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 50%, #bcccdc 100%);
+            color: #2d3748;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        main {
+            background: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        footer {
+            background: #2d3748;
+        }
+
+        .button-primary {
+            background: linear-gradient(135deg, #6b46c1 0%, #805ad5 100%);
+            color: white;
+        }
+
+        .button-primary:hover {
+            background: linear-gradient(135deg, #805ad5 0%, #6b46c1 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-secondary {
+            border: 2px solid #6b46c1;
+            color: #6b46c1;
+        }
+
+        .button-secondary:hover {
+            background: #6b46c1;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
-    <header class="w-full bg-white shadow">
-        <div class="w-full max-w-7xl mx-auto">
-            <div class="flex flex-col max-w-screen-xl p-5 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
-                <div class="flex flex-row items-center justify-between lg:justify-start">
-                    <a href="{% url 'freelancer-list' %}" class="text-3xl font-bold text-blue-600 transition duration-500 ease-in-out transform tracking-tight hover:scale-105">CampusConnect</a>
-                </div>
-                <nav class="flex-col items-center flex-grow hidden md:pb-0 md:flex md:justify-end md:flex-row lg:px-2">
-                    <div class="inline-flex items-center gap-4 list-none lg:ml-auto">
-                        {% if user.is_authenticated %}
-                            <p class="text-gray-600">{{ user.email }}</p>
-                            <form action="{% url 'account_logout' %}" method="POST" class="inline">
-                                {% csrf_token %}
-                                <button type="submit" class="px-6 py-2.5 text-base font-medium text-blue-600 transition duration-500 ease-in-out transform border-2 border-blue-600 rounded-xl shadow-md hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Sign out
-                                </button>
-                            </form>
-                        {% else %}
-                            <a href="{% url 'account_login' %}">
-                                <button class="px-6 py-2.5 text-base font-medium text-blue-600 transition duration-500 ease-in-out transform border-2 border-blue-600 rounded-xl shadow-md hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Sign in
-                                </button>
-                            </a>
-                            <a href="{% url 'account_signup' %}">
-                                <button class="px-6 py-2.5 text-base font-medium text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                    Sign up
-                                </button>
-                            </a>
-                        {% endif %}
-                    </div>
+
+<body class="flex flex-col min-h-screen">
+    <header class="w-full py-4">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <a href="{% url 'freelancer-list' %}" class="text-3xl font-bold text-purple-600 transition duration-500 ease-in-out transform tracking-tight hover:scale-105">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-8 h-8 mr-2 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M13 5v6h5v6h-2a2 2 0 01-2 2h-4a2 2 0 01-2-2H5V9h4v6m-2-6v6"></path>
+                    </svg>
+                    CampusConnect
+                </a>
+                <nav class="flex space-x-4">
+                    <form action="#" method="GET" class="relative">
+                        <input type="text" placeholder="Search..." class="px-4 py-2 text-base text-gray-800 bg-white border border-gray-300 rounded-full shadow-md focus:outline-none focus:border-purple-500 focus:ring-1 focus:ring-purple-500">
+                        <button type="submit" class="absolute top-0 right-0 mt-2 mr-3 text-gray-600 hover:text-purple-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m0 0l-6-6m6 6l-6 6m6-6l6 6M3 12h12"></path>
+                            </svg>
+                        </button>
+                    </form>
+                    {% if user.is_authenticated %}
+                        <p class="text-gray-600">{{ user.email }}</p>
+                        <form action="{% url 'account_logout' %}" method="POST" class="inline">
+                            {% csrf_token %}
+                            <button type="submit" class="px-6 py-2 font-medium button-secondary rounded-full shadow-md transition duration-500 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                                Sign out
+                            </button>
+                        </form>
+                    {% else %}
+                        <a href="{% url 'account_login' %}">
+                            <button class="px-6 py-2 font-medium button-secondary rounded-full shadow-md transition duration-500 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                                Sign in
+                            </button>
+                        </a>
+                        <a href="{% url 'account_signup' %}">
+                            <button class="px-6 py-2 font-medium button-primary rounded-full shadow-md transition duration-500 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">
+                                Sign up
+                            </button>
+                        </a>
+                    {% endif %}
                 </nav>
             </div>
         </div>
     </header>
-    <main class="container mx-auto p-12 bg-white shadow-lg rounded-lg flex-grow">
+    <main class="container mx-auto p-8 mt-6 flex-grow bg-white rounded-lg shadow-lg">
         {% block content %}
         {% endblock content %}
     </main>
-    <footer class="w-full bg-gray-800 text-white mt-12 py-6">
-        <div class="w-full max-w-7xl mx-auto text-center">
+    <footer class="w-full mt-12 py-6 text-white">
+        <div class="max-w-7xl mx-auto text-center">
             <p>&copy; 2024 CampusConnect. All rights reserved.</p>
         </div>
     </footer>
+    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+<script>
+  window.botpressWebChat.init({
+      "composerPlaceholder": "Chat with Connect Helpdesk",
+      "botConversationDescription": "anything related to students and freelancers",
+      "botId": "3a9093b0-6d79-418a-8a8f-2a5fc0456019",
+      "hostUrl": "https://cdn.botpress.cloud/webchat/v1",
+      "messagingUrl": "https://messaging.botpress.cloud",
+      "clientId": "3a9093b0-6d79-418a-8a8f-2a5fc0456019",
+      "webhookId": "50971488-9b24-466c-b34d-b288fab710ca",
+      "lazySocket": true,
+      "themeName": "prism",
+      "botName": "Connect Helpdesk",
+      "phoneNumber": "+91 6300001707",
+      "emailAddress": "rkothaka@gitam.in",
+      "website": "https://mha.com",
+      "frontendVersion": "v1",
+      "useSessionStorage": true,
+      "enableConversationDeletion": true,
+      "theme": "prism",
+      "themeColor": "#2563eb",
+      "allowedOrigins": []
+  });
+</script>
+
 </body>
 </html>
